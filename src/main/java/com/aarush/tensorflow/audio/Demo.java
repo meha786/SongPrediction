@@ -10,7 +10,6 @@ import com.aarush.tensorflow.classifiers.models.cifar10.Cifar10AudioClassifier;
 
 public class Demo {
 	public static void main(String[] args) {
-
 		Cifar10AudioClassifier classifier = new Cifar10AudioClassifier();
 		try {
 			classifier.load_model();

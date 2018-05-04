@@ -3,45 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.chen0040</groupId>
-	<artifactId>java-tensorflow-music</artifactId>
+	<groupId>com.aarush</groupId>
+	<artifactId>aarush-music</artifactId>
 	<version>1.0.1</version>
-
-
-
-
-	<licenses>
-		<license>
-			<name>MIT</name>
-			<url>https://github.com/chen0040/java-tensorflow-music/blob/master/LICENSE</url>
-			<comments>MIT License</comments>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<email>xs0040@gmail.com</email>
-			<id>chen0040</id>
-			<name>Xianshun Chen</name>
-			<url>https://github.com/chen0040</url>
-		</developer>
-	</developers>
-
-	<scm>
-		<url>https://github.com/chen0040/java-tensorflow-music</url>
-		<connection>scm:git:git://github.com/chen0040/java-tensorflow-music.git</connection>
-		<developerConnection>scm:git:git@github.com:chen0040/java-tensorflow-music.git</developerConnection>
-	</scm>
-
-	<issueManagement>
-		<url>https://github.com/chen0040/java-tensorflow-music/issues</url>
-		<system>GitHub Issues</system>
-	</issueManagement>
-
 
 	<name>Music Classifier and Encoder in Java and Tensorflow</name>
 	<description>Java implementation of music classifier, encoder, search engine and recommender using Tensorflow nd Java</description>
-	<url>https://github.com/chen0040/java-tensorflow-music</url>
 
 	<distributionManagement>
 		<snapshotRepository>
