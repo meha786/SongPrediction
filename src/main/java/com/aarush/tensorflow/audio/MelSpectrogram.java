@@ -57,6 +57,10 @@ public class MelSpectrogram  implements PitchDetectionHandler {
 
     AudioProcessor fftProcessor = new AudioProcessor(){
 
+    	// fast Fourier transform (FFT) is an algorithm that samples a signal 
+    	// over a period of time (or space) and divides it into its frequency 
+    	// components.[1] These components are single sinusoidal oscillations at 
+    	// distinct frequencies each with their own amplitude and phase.
         FFT fft = new FFT(bufferSize);
         float[] amplitudes = new float[bufferSize];
 
@@ -101,6 +105,8 @@ public class MelSpectrogram  implements PitchDetectionHandler {
         return bin;
     }
 
+    // generating the FFT
+    // Fourier Transform (FT) is used to convert a signal into its corresponding frequency domain. 
     private void drawFFT(double pitch, float[] amplitudes, FFT fft, BufferedImage bufferedImage) {
 
 
@@ -169,8 +175,19 @@ public class MelSpectrogram  implements PitchDetectionHandler {
         position = position % outputFrameWidth;
     }
 
+    
+    // This class plays a file and sends float arrays to registered AudioProcessor 
+    // implementors. This class can be used to feed FFT's, pitch detectors, audio players,
+    // ... Using a (blocking) audio player it is even possible to synchronize execution of 
+    // AudioProcessors and sound. This behavior can be used for visualization.
     public BufferedImage convertAudio(File audioFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-
+    	
+    	// the incoming audio stream originating from an audio file or a microphone is 
+        // read and chopped into frames of e.g. 1024 samples. Each frame travels through a 
+        // pipeline that modifies or analyses (e.g. pitch analysis) it.
+        // the AudioDispatcher is responsible to chop the audio in frames. 
+        // Also it wraps an audio frame into an AudioEvent object. This AudioEvent object is 
+        // send through a chain of AudioProcessors.
         AudioDispatcher dispatcher = AudioDispatcherFactory.fromFile(audioFile, bufferSize, overlap);
         if(playBack) {
             AudioFormat format = AudioSystem.getAudioFileFormat(audioFile).getFormat();
@@ -188,6 +205,8 @@ public class MelSpectrogram  implements PitchDetectionHandler {
 
         // run the dispatcher (on a new thread).
         dispatcher.run();
+        
+       
 
         return bufferedImage;
     }
@@ -201,6 +220,7 @@ public class MelSpectrogram  implements PitchDetectionHandler {
 
     }
 
+    // if the file is mp3, then its first converted to the wave format
     public static BufferedImage convert_mp3_to_image(File mp3){
         File tempFile = AudioUtils.convertMp3ToWave(mp3);
         BufferedImage img = convert_to_image(tempFile);
@@ -210,6 +230,7 @@ public class MelSpectrogram  implements PitchDetectionHandler {
 
     public static BufferedImage convert_to_image(File f) {
 
+    	// if the file is mp3 file, then covert it to wave  
         if(f.getPath().toLowerCase().endsWith(".mp3")){
             return convert_mp3_to_image(f);
         }

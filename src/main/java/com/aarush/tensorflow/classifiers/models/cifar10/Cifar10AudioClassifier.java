@@ -46,6 +46,7 @@ public class Cifar10AudioClassifier implements TrainedModelLoader, AudioClassifi
 
     private static final Logger logger = LoggerFactory.getLogger(Cifar10AudioClassifier.class);
 
+    // predicting the processed image
     @Override
     public String predict_image(BufferedImage image) {
         return predict_image(image, MelSpectrogramDimension.Width,
@@ -57,6 +58,7 @@ public class Cifar10AudioClassifier implements TrainedModelLoader, AudioClassifi
 
         image = ImageUtils.resizeImage(image, imgWidth, imgHeight);
 
+        // using tensor library to create tensor image
         Tensor<Float> imageTensor = TensorUtils.getImageTensor(image, imgWidth, imgHeight);
 
 
@@ -111,8 +113,10 @@ public class Cifar10AudioClassifier implements TrainedModelLoader, AudioClassifi
     // using 
     @Override
     public String predict_audio(File f) {
+    	// converting the file into image
         BufferedImage image = MelSpectrogram.convert_to_image(f);
 
+        // if image generated is a valid image, then predict Genre
         if(image != null) {
             return predict_image(image);
         }

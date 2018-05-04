@@ -14,12 +14,12 @@ public class Demo {
 		try {
 			classifier.load_model();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		List<String> paths = getAudioFiles();
 
+		// shuffling the songs in the lists 
 		Collections.shuffle(paths);
 
 		for (String path : paths) {

@@ -17,13 +17,19 @@ public interface AudioClassifier extends AudioEncoder {
 
     default String predict_image(BufferedImage image, int imgWidth, int imgHeight) {
 
+    	System.out.println("Buffered image: " + image); 
         float[] predicted = encode_image(image, imgWidth, imgHeight);
+        
+        System.out.println("encode image: " + encode_image(image, imgWidth, imgHeight));
+        
         if(predicted != null) {
             int nlabels = predicted.length;
+            System.out.println("Predicted leangth: " + predicted.length); 
             int argmax = 0;
             float max = predicted[0];
             for (int i = 1; i < nlabels; ++i) {
                 if (max < predicted[i]) {
+                	System.out.println("Predicted " + i + predicted[i]);
                     max = predicted[i];
                     argmax = i;
                 }

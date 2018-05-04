@@ -11,6 +11,10 @@ public class AudioUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(AudioUtils.class);
 
+    
+    // converting mp3 to wave file format so that missing data from the
+    // mp3 file (data which is still compressed and missing 
+    // can be regenerated
     public static File convertMp3ToWave(File mp3){
 
         logger.info("converting {} to wav file", mp3.getName());
