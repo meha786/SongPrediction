@@ -33,7 +33,7 @@ public class Demo {
 
 	private static List<String> getAudioFiles() {
 		List<String> list = new ArrayList<String>();
-		list.add("C:\\Users\\mehav\\Downloads\\song3.mp3");
+		list.add("C:\\Users\\mehav\\Downloads\\jazz.mp3");
 
 		return list;
 	}

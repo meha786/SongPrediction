@@ -215,8 +215,8 @@ public class MelSpectrogram  implements PitchDetectionHandler {
         }
 
         MelSpectrogram melGram = new MelSpectrogram();
-//        melGram.setOutputFrameWidth(MelSpectrogramDimension.Width);
-//        melGram.setOutputFrameHeight(MelSpectrogramDimension.Height);
+        melGram.outputFrameWidth = MelSpectrogramDimension.Width;
+        melGram.outputFrameHeight = MelSpectrogramDimension.Height;
 
 
         try {
@@ -243,8 +243,8 @@ public class MelSpectrogram  implements PitchDetectionHandler {
                             if(outputFile.exists()) continue;
 
                             MelSpectrogram melGram = new MelSpectrogram();
-//                            melGram.setOutputFrameWidth(MelSpectrogramDimension.Width);
-//                            melGram.setOutputFrameHeight(MelSpectrogramDimension.Height);
+                            melGram.outputFrameWidth = MelSpectrogramDimension.Width;
+                            melGram.outputFrameHeight = MelSpectrogramDimension.Height;
                             BufferedImage image = melGram.convertAudio(f);
 
                             ImageIO.write(image, "png", outputFile);
